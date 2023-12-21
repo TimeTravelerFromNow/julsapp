@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="album-show" style="
+--album-color-primary: <%= @album.customColorPrimary %>;
+ --album-color-secondary: <%= @album.customColorSecondary %>;
+  --album-cover-image: url(<%= url_for(@album.album_cover_image) %>)">
+
+<%= render @album %>
+<div class="actions">
+<%= link_to "Edit this album", edit_album_path(@album) %> |
+
+
+<%= button_to "Destroy this album", @album, method: :delete %>
+</div>
+</div>
+
+
+
+  <div class="bottom">
+      <%= link_to "Back to albums", albums_path %>
+</div>

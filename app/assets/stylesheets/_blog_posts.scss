@@ -1,0 +1,33 @@
+.blog_post.show {
+    .content {
+      display: flex;
+      justify-content: center;
+    }
+}
+
+.blog_posts.edit {
+  .action-header {
+    display: flex;
+    margin: 5px;
+
+
+    background-color: green;
+
+    max-height: 512px;
+  }
+  .blog_post-form
+  {
+    display: flex;
+    margin: 5px;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 10px;
+    background-color: white;
+
+    max-height: 512px;
+    .title {
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+
+<div class="container">
+<div class="d-flex flex-row justify-content-center">
+
+  <% @blog_posts.each do |blog_post| %>
+
+    <%= link_to blog_post_path(blog_post), class: 'text-decoration-none' do  %>
+    <div class="card mt-3 post-card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <% if blog_post.header_image.present? %>
+            <div class="header-img" style="background-image: url(<%= url_for(blog_post.header_image) %>);">
+            </div>
+            <% end %>
+          </div>
+            <div class="col-md-10">
+              <h5 class='card-title mb-1 text-dark'><%= blog_post.title %></h5>
+              <p class='text-secondary mb-0'><%= blog_post.description %> </p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+
+<div  id="albums" class="col-md-6 col-lg-4 ">
+    <% @albums.order(updated_at: :desc).each  do |album| %>
+
+    <div class="album-card d-flex flex-column" style="--album-color-primary: <%= album.customColorPrimary %>;
+       --album-color-secondary:  <%= album.customColorSecondary %>;
+       --album-cover-image: url(<%= url_for(album.album_cover_image) %>);">
+      <%= render album %>
+
+      </div>
+    <% end %>
+</div>
+
+<div id="musics">
+  <% @musics.each do |music| %>
+    <%= render music %>
+    <p>
+      <%= link_to "Show this music", music %>
+    </p>
+  <% end %>
+</div>
+
+
+
+</div>
+</div>
+
+<div class="bottom">
+<%= link_to "Music Pieces", musics_path, class:"btn btn-secondary"%>
+<%= link_to "Albums", albums_path, class:"btn btn-secondary" %>
+<%= link_to "Blog posts", blog_posts_path, class:"btn btn-secondary" %>
+</div>

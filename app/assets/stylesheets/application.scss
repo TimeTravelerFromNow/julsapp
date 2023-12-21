@@ -1,0 +1,234 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+$primary: #83fdff;
+
+
+@import "bootstrap";
+@import "home_page";
+@import "album";
+
+:root { // global styles
+  .Fpagetext{
+    width: 90%;
+    color: #F0F8FF;
+  //  position: absolute;
+    top: 50%;
+    left: 50%;
+    //transform: translate(-50%,-50%);
+    text-align: center;
+  }
+
+
+  .form-card {
+    --color-primary: red;
+    --color-secondary: blue;
+
+    margin: 40px;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 10px;
+    border-color: var(--color-secondary);
+
+
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  .btn.btn-secondary {
+
+        margin: auto;
+  }
+  .album-card {
+
+      .play {
+        display: flex;
+justify-content: center;
+align-items: center;
+margin: 40px;
+      }
+      --album-color-primary: red;
+      --album-color-secondary: blue;
+          --album-cover-image: url_for();
+
+      margin: 40px;
+      border-style: solid;
+      border-width: medium;
+      border-radius: 10px;
+      border-color: var(--album-color-secondary);
+      background-color: var(--album-color-primary);
+      background-image: var(--album-cover-image);
+
+      max-width: 216px;
+      max-height: 512px;
+      min-height: 208px;
+      .title {
+        font-size: 18px;
+        text-align: center;
+        background-color: var(--album-color-primary);
+      }
+
+    .album-image {
+        display: block;
+      margin-left: auto;
+      margin-right: auto;
+        height: 64px;
+        width: 64px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: var(--album-color-secondary);
+
+        border-style: solid;
+        border-width: medium;
+
+        border-color: var(--album-color-secondary);
+    }
+
+    .btn.btn-secondary {
+      width: 100px;
+      height: 10 px;
+      margin: 10px;
+      display: flex;
+    justify-content: center;
+    }
+  } // end album card
+
+  .blog_post-card {
+      margin: 5px;
+      border-style: solid;
+      border-width: medium;
+      border-radius: 10px;
+      background-color: white;
+      max-width: 216px;
+      max-height: 512px;
+      .title {
+        font-size: 18px;
+        text-align: center;
+      }
+
+
+    .btn.btn-secondary {
+      width: 100px;
+      height: 10 px;
+      margin: 10px;
+      display: flex;
+    justify-content: center;
+    }
+  } // end blog_post card
+
+
+  .nav-links ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+  }
+  .nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: white;
+    display: block;
+    margin: auto;
+    transition: 0.4s;
+  }
+  .nav-links ul li:hover::after{
+    width: 100%;
+
+  }
+  .nav-links{
+    flex: 1;
+    text-align: center;
+    letter-spacing: 5px;
+
+  }
+  .nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 40px;
+    position: relative;
+
+  }
+
+  nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .post-card {
+      .header-img {
+        width: 100%;
+        height: 100px;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+
+    .image {
+        text-align: center;
+        img {
+          max-width: 80%
+        }
+        .delete-btn {
+          position: absolute;
+          right: calc(10% + 38px);
+          opacity: 0.7;
+          &:hover {
+            opacity: 1.0;
+          }
+        }
+      }
+} // end :root global styles
+
+
+.app-css
+{
+
+  .top-bar {
+    .title-text {
+      // border-style: solid;
+      // border-width: medium;
+
+
+      margin: 10px;
+
+      color: white;
+      font-display: block;
+      font-size: 42px;
+      text-align: center;
+    }
+    // render the same in album.index
+
+        border-color: white;
+      background: linear-gradient(60deg, rgba(0,0,0,100%) 0%, rgba(105, 105, 105, 95%) 95%);
+  }
+
+
+  .bottom {
+      margin-bottom: 50px;
+      bottom: 40;
+      left: 0;
+      right: 0;
+      text-align: center;
+  }
+}
+.background{
+    color: #999999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}

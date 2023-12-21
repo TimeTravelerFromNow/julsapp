@@ -1,0 +1,31 @@
+.albums.index {
+
+}
+
+  .albums.show {
+    .header-img {
+      height: 64px;
+      width: 64px;
+    //  background-size: cover;
+      background-position: contain;
+    }
+  }
+  
+  .albums.edit {
+    .album-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      height: 200px;
+      width: 200px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .container {
+      border-style: solid;
+      border-width: medium;
+      border-radius: 10px;
+      border-color: #AEF488;
+    }
+  }// new

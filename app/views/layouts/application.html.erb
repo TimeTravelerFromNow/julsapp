@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Julsapp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="app-css" >
+    <nav class="navbar navbar-customclass navbar-expand-lg navbar-light top-bar">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="nav-links ml-md-auto mb-2 mb-lg-0">
+          <ul>
+
+            <li>
+             <%= link_to "HOME",  home_page_index_path %>
+            </li>
+            <li>
+            <%= link_to "ALBUMS", albums_path %>
+            </li>
+            <li>
+            <%= link_to "BLOG", blog_posts_path%>
+            </li>
+            <li>
+            <%= link_to "MUSIC", musics_path  %>
+            </li>
+
+            </ul>
+          </div>
+      </nav>
+
+
+      <div class="<%= controller_name %> <%= action_name %>" data-controller="<%= controller_name %>">
+        <div class=" Fpagetext">
+
+            <h1 class="title">
+              <% if controller_name == "home_page" %>
+              JULIAN DETERING
+              <% else %>
+              JULIAN'S <%= controller_name %>
+              <% end %>
+              </h1>
+              <p class="subtitle">
+                <% if controller_name == "home_page" %>
+                  music portfolio + blog
+                <% end %>
+              </p>
+        </div>
+        <%= yield %>
+        <canvas id="canvas"  data-background-target="backgroundCanvas" style="background: center" class="background" data-controller="background"  >
+        </canvas>
+      </div>
+  </body>
+
+</html>

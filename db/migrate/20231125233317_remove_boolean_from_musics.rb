@@ -1,0 +1,5 @@
+class RemoveBooleanFromMusics < ActiveRecord::Migration[7.0]
+  def change
+    remove_column :musics, :boolean
+  end
+end

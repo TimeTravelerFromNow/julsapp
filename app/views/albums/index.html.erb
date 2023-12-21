@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+
+
+<div  id="albums" class="col-md-6 col-lg-4">
+
+  <% @albums.each do |album| %>
+
+  <div class="album-card" style="--album-color-primary: <%= album.customColorPrimary %>;
+     --album-color-secondary:  <%= album.customColorSecondary %>;
+     --album-cover-image: url(<%= url_for(album.album_cover_image) %>);">
+    <%= render album %>
+    <p>
+      <%= link_to "view album", album, class: "btn btn-secondary" %>
+    </p>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="bottom">
+<%= link_to "Music Pieces", musics_path, class:"btn btn-secondary"%>
+<%= link_to "Home Page", home_page_index_path, class:"btn btn-secondary" %>
+<%= link_to "Blog posts", blog_posts_path, class:"btn btn-secondary" %>
+</div>

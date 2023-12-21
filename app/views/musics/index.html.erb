@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Musics</h1>
+
+<div id="musics">
+  <% @musics.each do |music| %>
+    <%= render music %>
+    <p>
+      <%= link_to "Show this music", music %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New music", new_music_path %>
+
+<div class="bottom">
+<%= link_to "Home Page", home_page_index_path, class:"btn btn-secondary"%>
+<%= link_to "Albums", albums_path, class:"btn btn-secondary" %>
+<%= link_to "Blog posts", blog_posts_path, class:"btn btn-secondary" %>
+</div>
