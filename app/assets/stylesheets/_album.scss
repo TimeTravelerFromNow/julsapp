@@ -1,3 +1,60 @@
+
+:root {
+  .album-card {
+
+      .play {
+        display: flex;
+justify-content: center;
+align-items: center;
+margin: 40px;
+      }
+      --album-color-primary: red;
+      --album-color-secondary: blue;
+          --album-cover-image: url_for();
+
+      margin: 40px;
+      border-style: solid;
+      border-width: medium;
+      border-radius: 10px;
+      border-color: var(--album-color-secondary);
+      background-color: var(--album-color-primary);
+      background-image: var(--album-cover-image);
+
+      max-width: 216px;
+      max-height: 512px;
+      min-height: 208px;
+      .title {
+        font-size: 18px;
+        text-align: center;
+        background-color: var(--album-color-primary);
+      }
+
+    .album-image {
+        display: block;
+      margin-left: auto;
+      margin-right: auto;
+        height: 64px;
+        width: 64px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: var(--album-color-secondary);
+
+        border-style: solid;
+        border-width: medium;
+
+        border-color: var(--album-color-secondary);
+    }
+
+    .btn.btn-secondary {
+      width: 100px;
+      height: 10 px;
+      margin: 10px;
+      display: flex;
+    justify-content: center;
+    }
+  } // end album card
+}
+
 .albums.index {
 
 }
@@ -10,7 +67,7 @@
       background-position: contain;
     }
   }
-  
+
   .albums.edit {
     .album-img {
       display: block;

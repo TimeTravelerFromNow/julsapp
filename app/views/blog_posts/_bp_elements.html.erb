@@ -1,1 +1,28 @@
 
+<div class="elements col md-5">
+<% blog_post.elements.each do |element| %>
+<% form_with(model: element) do |form| %>
+<% if element.paragraph? %>
+  Paragraph elemen
+  <div class="paragraph">
+    </div>
+<% end %>
+
+<% if element.image? %>
+
+image elem
+<div class="image">
+  <% if element.image.present? %>
+   has image attached.
+  <% else %>
+    <%= form.file_field :image, class: 'form-control' %>
+  <% end %>
+  </div>
+
+<% end %>
+
+<% end #form %>
+
+
+<% end %>
+</div>

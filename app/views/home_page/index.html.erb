@@ -5,21 +5,15 @@
   <% @blog_posts.each do |blog_post| %>
 
     <%= link_to blog_post_path(blog_post), class: 'text-decoration-none' do  %>
-    <div class="card mt-3 post-card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-2">
+    <div class="card mt-3 blog_post-card">
             <% if blog_post.header_image.present? %>
             <div class="header-img" style="background-image: url(<%= url_for(blog_post.header_image) %>);">
             </div>
             <% end %>
-          </div>
             <div class="col-md-10">
-              <h5 class='card-title mb-1 text-dark'><%= blog_post.title %></h5>
+              <h5 class='title mb-1 text-dark'><%= blog_post.title %></h5>
               <p class='text-secondary mb-0'><%= blog_post.description %> </p>
-            </div>
-        </div>
-      </div>
+          </div>
     </div>
     <% end %>
   <% end %>
