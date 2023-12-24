@@ -9,3 +9,4 @@ pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.2/dist/js/bootstrap.e
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
+pin "actioncable", to: "https://ga.jspm.io/npm:actioncable@5.2.8-1/lib/assets/compiled/action_cable.js"

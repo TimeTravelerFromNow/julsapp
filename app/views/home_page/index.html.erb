@@ -1,11 +1,12 @@
 
 <div class="container">
-<div class="d-flex flex-row justify-content-center">
+<div  class="d-flex flex-row justify-content-center">
 
+  <div  id="blog_post" class="col-md-6 col-lg-4 ">
   <% @blog_posts.each do |blog_post| %>
 
     <%= link_to blog_post_path(blog_post), class: 'text-decoration-none' do  %>
-    <div class="card mt-3 blog_post-card">
+    <div class="blog_post-card mt-3">
             <% if blog_post.header_image.present? %>
             <div class="header-img" style="background-image: url(<%= url_for(blog_post.header_image) %>);">
             </div>
@@ -17,6 +18,7 @@
     </div>
     <% end %>
   <% end %>
+  </div>
 
 <div  id="albums" class="col-md-6 col-lg-4 ">
     <% @albums.order(updated_at: :desc).each  do |album| %>

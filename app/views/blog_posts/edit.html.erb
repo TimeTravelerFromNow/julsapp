@@ -2,7 +2,6 @@
 
 <div class="blog_post-form card mb-5">
   <div class="card-header text-right">Editing <b><%=@blog_post.kind %> </b> Blog Post</div>
-
   <%= render "form", blog_post: @blog_post %>
 </div>
 
@@ -19,6 +18,8 @@
             <%= form.submit "Image", class: 'btn btn-dark' %>
           <% end %>
   </div>
+
+
   <div class="card mb-5">
     <div class="card-header text-right">
       <% if @blog_post.public? %>
@@ -32,8 +33,9 @@
     </div>
 
 
-
+    <div class=" col md-5">
       <%= render "bp_elements", blog_post: @blog_post %>
+    </div>
   </div>
 
 </div>

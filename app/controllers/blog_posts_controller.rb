@@ -18,7 +18,7 @@ class BlogPostsController < ApplicationController
 
   # GET /blog_posts/1/edit
   def edit
-    @element = @blog_post.elements.build(kind: "paragraph")
+    @element = @blog_post.elements.build(kind: "paragraph", id: 0)
   end
 
   # POST /blog_posts or /blog_posts.json

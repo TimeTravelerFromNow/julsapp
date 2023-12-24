@@ -15,6 +15,8 @@ import { Controller } from "@hotwired/stimulus"
 
 var canvas = undefined;
 var ctx = undefined;
+// create the background gradient once
+var bgGrad = undefined; // initialized in connect()
 
 // top level code
 document.addEventListener('mousemove', (event) => {});
@@ -25,7 +27,7 @@ onmousemove = (event) => {
     function loop() {
         if (canvas && ctx){
         // // space background
-        ctx.fillStyle = COLOR_SPACE;
+        ctx.fillStyle = bgGrad;
        ctx.fillRect(0, 0, canvas.width, canvas.height);
         // draw the stars
         ctx.fillStyle = COLOR_STARS;
@@ -69,6 +71,11 @@ export default class extends Controller {
     // set up the canvas and context
      canvas = this.backgroundCanvasTarget;
      ctx = canvas.getContext("2d");
+
+     bgGrad = ctx.createLinearGradient(0,0,0,canvas.height);
+     bgGrad.addColorStop(0,"#0FF");
+     bgGrad.addColorStop(1,"#08F");
+
      canvas.height = document.documentElement.scrollHeight;
      canvas.width = document.documentElement.scrollWidth;
 

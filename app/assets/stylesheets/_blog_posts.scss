@@ -8,6 +8,13 @@
         background-color: white;
         max-width: 216px;
         max-height: 512px;
+
+        --color-secondary: blue;
+
+        border-color: var(--color-secondary);
+
+
+
         .title {
           font-size: 18px;
           text-align: center;
@@ -15,7 +22,7 @@
 
       .btn.btn-secondary {
         width: 100px;
-        height: 10 px;
+        height: 10px;
         margin: 10px;
         display: flex;
       justify-content: center;
