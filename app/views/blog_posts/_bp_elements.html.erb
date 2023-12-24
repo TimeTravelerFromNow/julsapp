@@ -1,15 +1,9 @@
 
 <% blog_post.elements.each do |element| %>
 
-<%if element.persisted? %>
-persisted element
-<% else %>
-nonpersisted element.
-<% end %>
-
 <% if element.paragraph? %>
-<div class="paragraph mb-3 mb-4">
-              <div class="paragraph-content">
+<div class="paragraph mb-3 mb-4" data-controller="paragraph">
+              <div class="paragraph-content" data-action="click->paragraph#click">
                 <% if element.content.present? %>
                 <%= element.content %>
                 <% else %>
@@ -31,7 +25,7 @@ nonpersisted element.
                   data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         <% end %>
               </div>
-            </div>
+</div>
 <% end %>
 
 <% if element.image? %>

@@ -35,6 +35,12 @@
         background-position: center;
       }
     } // end blog_post card
+
+    .paragraph-content{
+
+      display: flex;
+    justify-content: center;
+    }
 }
 
 .blog_post.show {
@@ -45,6 +51,19 @@
 }
 
 .blog_posts.edit {
+  .blog_post-content {
+
+      display: flex;
+      margin-right: 100px;
+
+
+  }
+
+  .blog_post-content :hover::after{
+    background-color: gray;
+
+  }
+  
   .action-header {
     display: flex;
     margin: 5px;
@@ -58,6 +77,8 @@
   {
     display: flex;
     margin: 5px;
+margin-left: 100px;
+
     border-style: solid;
     border-width: medium;
     border-radius: 10px;
