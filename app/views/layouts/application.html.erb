@@ -41,21 +41,7 @@
 
 
       <div class="<%= controller_name %> <%= action_name %>" data-controller="<%= controller_name %>">
-        <div class=" Fpagetext">
-
-            <h1 class="title">
-              <% if controller_name == "home_page" %>
-              JULIAN DETERING
-              <% else %>
-              JULIAN'S <%= controller_name %>
-              <% end %>
-              </h1>
-              <p class="subtitle">
-                <% if controller_name == "home_page" %>
-                  music portfolio + blog
-                <% end %>
-              </p>
-        </div>
+      
         <%= yield %>
         <canvas id="canvas"  data-background-target="backgroundCanvas" style="background: center" class="background" data-controller="background"  >
         </canvas>

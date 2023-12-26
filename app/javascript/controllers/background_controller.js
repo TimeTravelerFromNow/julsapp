@@ -73,8 +73,8 @@ export default class extends Controller {
      ctx = canvas.getContext("2d");
 
      bgGrad = ctx.createLinearGradient(0,0,0,canvas.height);
-     bgGrad.addColorStop(0,"#0FF");
-     bgGrad.addColorStop(1,"#08F");
+     bgGrad.addColorStop(0,"#000000");
+     bgGrad.addColorStop(1,"#555666");
 
      canvas.height = document.documentElement.scrollHeight;
      canvas.width = document.documentElement.scrollWidth;
