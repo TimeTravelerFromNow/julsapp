@@ -10,41 +10,38 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="app-css" >
-    <nav class="navbar navbar-customclass navbar-expand-lg navbar-light top-bar">
-    <div class="container-fluid">
+  <body>
+    <nav class="app-css top-bar navbar navbar-customclass navbar-expand-lg navbar-light">
+    <div class="container-fluid ">
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="nav-links ml-md-auto mb-2 mb-lg-0">
-          <ul>
 
-            <li>
-             <%= link_to "HOME",  home_page_index_path %>
-            </li>
-            <li>
-            <%= link_to "ALBUMS", albums_path %>
-            </li>
-            <li>
-            <%= link_to "BLOG", blog_posts_path%>
-            </li>
-            <li>
-            <%= link_to "MUSIC", musics_path  %>
-            </li>
+          <ul class="navbar-nav ml-md-auto mb-2 mb-lg-0 ">
 
+
+            <li><%= link_to "HOME",  home_page_index_path, class: 'nav-link active' %></li>
+
+            <li><%= link_to "ALBUMS", albums_path,  class: 'nav-link active'%></li>
+
+
+            <li><%= link_to "BLOG", blog_posts_path, class: 'nav-link active'%></li>
+
+            <%= link_to "music", musics_index_path%>
             </ul>
           </div>
       </nav>
 
 
       <div class="<%= controller_name %> <%= action_name %>" data-controller="<%= controller_name %>">
-      
+
         <%= yield %>
         <canvas id="canvas"  data-background-target="backgroundCanvas" style="background: center" class="background" data-controller="background"  >
         </canvas>
+
       </div>
   </body>
 

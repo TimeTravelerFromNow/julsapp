@@ -1,0 +1,51 @@
+
+
+:root {
+
+ .music {
+
+   width: 90%;
+   text-align: center;
+   background-position: center;
+   .warning {
+      width: 200px;
+      height: 40px;
+      text-decoration: none;
+      text-decoration-style: text-decoration-none;
+      background-color: #DD8866;
+    }
+
+    .audio-track {
+
+      width: 150px;
+      height: 30px;
+      background-color: #dddddd;
+      margin: 20px 0
+
+    }
+    .time-bar {
+      width: 0;
+      height: 30px;
+      background-color: #474747;
+    }
+    .music-file {
+      font-size: 12px;
+      background-color: gray;
+    }
+ }
+
+ .music-upload {
+   max-width: 60%;
+   margin-top: 1%;
+   justify-content: center;
+   margin-left: 20%;
+   margin-right: 20%;
+ }
+ .music-form{
+   max-width: 90%;
+   margin: 5%;
+   text-align: center;
+   background-color: lightgray;
+ }
+
+}

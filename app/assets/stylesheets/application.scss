@@ -13,117 +13,67 @@
  *= require_tree .
  *= require_self
  */
-$primary: #83fdff;
+$primary: #5588ff;
 
 
 @import "bootstrap";
 @import "home_page";
 @import "album";
-
-:root { // global styles
-  .Fpagetext{
-    width: 90%;
-    color: #F0F8FF;
-  //  position: absolute;
-    top: 50%;
-    left: 50%;
-    //transform: translate(-50%,-50%);
-    text-align: center;
-  }
+@import "music";
 
 
-  .form-card {
-    --color-primary: red;
-    --color-secondary: blue;
+.app-css.top-bar {
+    .nav-link.active {
+      color: white;
+      text-decoration: none;
+      font-size: 25px;
+    }
 
-    margin: 40px;
-    border-style: solid;
-    border-width: medium;
-    border-radius: 10px;
-    border-color: var(--color-secondary);
+    ul li::after{
+      content: '';
+      width: 0%;
+      height: 2px;
+      background: white;
+      display: block;
+      margin: auto;
+      transition: 0.4s;
+    }
+     ul li:hover::after {
+      width: 100%;
+    }
+    ul li{
+      flex: 1;
+      text-align: center;
+      letter-spacing: 5px;
 
+    }
+    ul li{
+      list-style: none;
+      display: inline-block;
+      padding: 8px 40px;
+      position: bottom;
+    }
 
-    left: 0;
-    right: 0;
-    text-align: center;
-  }
-  .btn.btn-secondary {
-
-        margin: auto;
-  }
-
-  .nav-links ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 25px;
-  }
-  .nav-links ul li::after{
-    content: '';
-    width: 0%;
-    height: 2px;
-    background: white;
-    display: block;
-    margin: auto;
-    transition: 0.4s;
-  }
-  .nav-links ul li:hover::after{
-    width: 100%;
-
-  }
-  .nav-links{
-    flex: 1;
-    text-align: center;
-    letter-spacing: 5px;
-
-  }
-  .nav-links ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 8px 40px;
-    position: bottom;
-
-  }
-
-  nav{
-    display: flex;
-    // padding-top: 10%;
-    justify-content: space-between;
-    align-items: center;
-  }
-} // end :root global styles
-
-
-.app-css
-{
-
-  .top-bar {
-    .title-text {
-      // border-style: solid;
-      // border-width: medium;
-
-
-      margin: 10px;
+    navbar-nav{
+      display: flex;
+      // padding-top: 10%;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar-toggler {
 
       color: white;
-      font-display: block;
-      font-size: 42px;
-      text-align: center;
+      background: linear-gradient(10deg, rgba(90,90,90,100%) 0%, rgba(240, 240, 240, 95%) 95%);
     }
-    // render the same in album.index
+    .navbar-toggler-icon {
+      color: white;
+    }
+    justify-content:center;
 
-        border-color: white;
-      background: linear-gradient(60deg, rgba(0,0,0,100%) 0%, rgba(105, 105, 105, 95%) 95%);
-  }
-
-
-  .bottom {
-      margin-bottom: 50px;
-      bottom: 40;
-      left: 0;
-      right: 0;
-      text-align: center;
-  }
+    border-color: white;
+    background: linear-gradient(60deg, rgba(0,0,0,100%) 0%, rgba(105, 105, 105, 95%) 95%);
 }
+
 .background{
     color: #999999;
     position: absolute;

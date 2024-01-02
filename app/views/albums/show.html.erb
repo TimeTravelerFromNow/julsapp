@@ -1,11 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="album-show" style="
---album-color-primary: <%= @album.customColorPrimary %>;
- --album-color-secondary: <%= @album.customColorSecondary %>;
-  --album-cover-image: url(<%= url_for(@album.album_cover_image) %>)">
+<div class="card col col-md-2">
 
-<%= render @album %>
+
+
+  <div class="album-img" style="
+    --album-cover-image: url(<%= url_for(@album.album_cover_image) %>)">
+    </div>
+
+
+    <div class="music-list" id="controls" data-controller="music">
+
+      <% @album.musics.each do |music| %>
+
+          <%= render music %>
+
+      <% end %>
+    </div>
+
+
+
+</div>
+
+
+
+
 <div class="actions">
 <%= link_to "Edit this album", edit_album_path(@album) %> |
 

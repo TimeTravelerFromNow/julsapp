@@ -1,34 +1,112 @@
 
 :root {
+  .album-img {
+
+    --album-cover-image: url_for();
+
+    margin: 1%;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 10px;
+    background-image: var(--album-cover-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    object-fit: scale-down;
+    background-position: center;
+
+    background-color: gray;
+
+    max-width: 416px;
+    max-height: 416px;
+    min-height: 416px;
+  }
   .album-card {
 
-      .play {
-        display: flex;
-justify-content: center;
-align-items: center;
-margin: 40px;
-      }
-      --album-color-primary: red;
-      --album-color-secondary: blue;
-          --album-cover-image: url_for();
-
-      margin: 40px;
-      border-style: solid;
-      border-width: medium;
-      border-radius: 10px;
-      border-color: var(--album-color-secondary);
-      background-color: var(--album-color-primary);
-      background-image: var(--album-cover-image);
-
-      max-width: 216px;
-      max-height: 512px;
-      min-height: 208px;
       .title {
         font-size: 18px;
         text-align: center;
-        background-color: var(--album-color-primary);
       }
 
+    .btn.btn-secondary {
+      width: 100px;
+      height: 10px;
+      margin: 10px;
+      display: flex;
+    justify-content: center;
+    }
+  } // end album card
+
+  .form-card {
+    margin: 40px;
+    border-style: solid;
+    border-width: medium;
+    background-color: rgba(0.3,0.6,0.9,0.3);
+
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  .btn.btn-secondary {
+        margin: auto;
+  }
+
+
+} // root
+
+.albums.index {
+  .album-name {
+    position: relative;
+    bottom: -90%;
+    min-height: 10%;
+    min-width: 10%;
+    text-align: center;
+    font-family: monospace;
+  }
+}
+
+  .albums.show {
+    .header-img {
+    display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 200px;
+            width: 200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            object-fit: scale-down;
+            background-position: center;
+            margin-top: 1%;
+              margin-bottom: 1%;
+    }
+  }
+
+  .albums.edit {
+    .album-modif {
+      margin-top: 1%;
+      margin-left: 10%;
+    }
+
+    .album-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      height: 200px;
+      width: 200px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      object-fit: scale-down;
+      background-position: center;
+      margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
+    .container {
+      border-style: solid;
+      border-width: medium;
+      border-radius: 10px;
+      border-color: #gray;
+      max-width: 30%;
+    }
     .album-image {
         display: block;
       margin-left: auto;
@@ -37,52 +115,17 @@ margin: 40px;
         width: 64px;
         background-repeat: no-repeat;
         background-position: center;
-        background-color: var(--album-color-secondary);
+        background-size: contain;
 
         border-style: solid;
         border-width: medium;
-
-        border-color: var(--album-color-secondary);
+        object-fit: scale-down;
     }
 
-    .btn.btn-secondary {
-      width: 100px;
-      height: 10 px;
-      margin: 10px;
-      display: flex;
-    justify-content: center;
-    }
-  } // end album card
-}
-
-.albums.index {
-
-}
-
-  .albums.show {
-    .header-img {
-      height: 64px;
-      width: 64px;
-    //  background-size: cover;
-      background-position: contain;
-    }
-  }
-
-  .albums.edit {
-    .album-img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      height: 200px;
-      width: 200px;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .container {
-      border-style: solid;
-      border-width: medium;
-      border-radius: 10px;
-      border-color: #AEF488;
+    .cover-image-upload {
+      margin-left: 10%;
+      margin-right: 10%;
+      max-width: 80%;
+      background-color: orange;
     }
   }// new

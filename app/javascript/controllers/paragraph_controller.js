@@ -4,25 +4,29 @@ export default class extends Controller {
   static targets = ["paragraphOpen","paragraphClose"]
 
   connect() {
-
+  
   }
   click(event) {
     console.log("clicked.")
-    console.log(event.target.closest('.paragraph-content'))
-    let element = event.target.closest('.paragraph-content')
+    var element = event.target.closest('.paragraph-content')
+    event.preventDefault()
 
-      if (!element) return;
+    if (element) {
 
-      event.preventDefault()
-
-      if (!event.target.matches('.cancel')) {
-      element.classList.add('d-none')
-      element.nextElementSibling.classList.remove('d-none')
-    } else {
-      element.classList.remove('d-none') // clear just in case, dont want to accidentally have 2 'd-none'
-      element.classList.add('d-none')
+          element.classList.add('d-none')
+          element.nextElementSibling.classList.remove('d-none')
+          return;
     }
 
+    element = event.target.closest('.paragraph-form')
+    if (!element) {
+          return;
+    }
+
+    if (!event.target.matches('.cancel')) return;
+
+    element.classList.add('d-none')
+    element.previousElementSibling.classList.remove('d-none')
 
   }
 }

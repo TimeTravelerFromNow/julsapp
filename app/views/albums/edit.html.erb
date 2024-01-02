@@ -1,9 +1,25 @@
 
+<div class="album-modif" >
+  <div class="row">
+  <div class="container">
+    <%= render "form", album: @album %>
+  </div>
 
-<%= render "form", album: @album %>
-
-<br>
-
+  <div class="col">
+    <div class="card music-upload">
+      <div> UPLOAD MUSIC </div>
+      <%= form_with(model: [@album, @music]) do |form| %>
+        <%= form.file_field :music_file %>
+        <%= form.hidden_field :album_id, value: @album.id %>
+        <%= form.hidden_field :name, value: nil %>
+        <br>
+        <%= form.submit "Add Music", class: 'btn btn-dark' %>
+      <% end %>
+    </div>
+    <%= render "album_music", album: @album %>
+  </div>
+</div>
+</div>
 
 <div class="bottom">
   <%= link_to "Show this album", @album %> |

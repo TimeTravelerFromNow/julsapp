@@ -25,7 +25,7 @@
         height: 10px;
         margin: 10px;
         display: flex;
-      justify-content: center;
+        justify-content: center;
       }
 
       .header-img {
@@ -35,17 +35,11 @@
         background-position: center;
       }
     } // end blog_post card
-
-    .paragraph-content{
-
-      display: flex;
-    justify-content: center;
-    }
-}
-
-.blog_post.show {
     .content {
       display: flex;
+      justify-content: center;
+    }
+    .blog_post-paragraph {
       justify-content: center;
     }
 }
@@ -61,9 +55,8 @@
 
   .blog_post-content :hover::after{
     background-color: gray;
-
   }
-  
+
   .action-header {
     display: flex;
     margin: 5px;

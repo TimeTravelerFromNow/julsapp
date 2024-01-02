@@ -19,7 +19,7 @@
                     <%= form.submit class: 'btn btn-primary' %>
                   </div>
                 </div>
-                <a href="#" class="cancel btn btn-dark">Cancel</a>
+                <%= link_to "Cancel", edit_blog_post_path(element.blog_post), class: "cancel btn btn-dark", method: :get %>
                 <%= link_to 'Delete', blog_post_element_path(blog_post, element),
                   class: 'btn btn-danger',
                   data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

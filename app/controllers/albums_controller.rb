@@ -1,4 +1,4 @@
-class AlbumsController < ApplicationController
+ class AlbumsController < ApplicationController
   before_action :set_album, only: %i[ show edit update destroy ]
 
   # GET /albums or /albums.json
@@ -12,11 +12,13 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @album = Album.new( {"color" => "blue"})
+    @album = Album.new( )
+    @music = Music.new()
   end
 
-  # GET /albums/1/edit
+  # GET /blog_posts/1/edit
   def edit
+    @music = @album.musics.build(name: "unnamed song", id: 0)
   end
 
   # POST /albums or /albums.json
@@ -65,6 +67,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:name, :album_cover_image, :color)
+      params.require(:album).permit(:name, :album_cover_image, :music)
     end
 end
