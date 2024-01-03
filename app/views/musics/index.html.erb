@@ -3,13 +3,11 @@
 <h1>Musics</h1>
 <p> <%= @musics.count %> Songs </p>
 <p style="color: green"><%= notice %></p>
-<div id="musics" class="row">
+<div id="musics" class="row" data-controller="audio">
   <% @musics.each do |music| %>
     <% if music.persisted? %>\
 
-      <div id="controls" data-controller="music">
       <%= render  music %>
-      </div>
       <%= render "form", album: @album, music: music %>
     <% end %>
   <% end %>

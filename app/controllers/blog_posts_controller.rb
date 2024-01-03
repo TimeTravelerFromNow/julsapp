@@ -12,7 +12,7 @@ class BlogPostsController < ApplicationController
 
   # GET /blog_posts/new
   def new
-    @blog_post = BlogPost.new( { "kind" => "project", "status" => "private" } )
+    @blog_post = BlogPost.new( { "status" => "private" } )
     @element = Element.new()
   end
 
@@ -67,6 +67,6 @@ class BlogPostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_post_params
-      params.require(:blog_post).permit(:title, :description, :status, :kind, :header_image, :element)
+      params.require(:blog_post).permit(:title, :description, :status, :header_image, :element)
     end
 end

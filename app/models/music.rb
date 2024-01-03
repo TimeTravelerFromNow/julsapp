@@ -7,4 +7,5 @@ class Music < ApplicationRecord
   def single?
     return :album_id == nil
   end
+
 end

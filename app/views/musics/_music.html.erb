@@ -1,29 +1,30 @@
 
-<div id="<%= dom_id music %>" class="music card">
+<div id="<%= dom_id music %>" class="music" data-controller="music" data-action="music:playButtonPressed->audio#playPressed"">
   <% if (music.music_file.signed_id) %>
 
 
-      <audio src = <%= rails_blob_url music.music_file %>, data-music-target="audio"> </audio>
-
-      <div class="audio-track" data-music-target="audioTrack"><div class="time-bar" data-music-target="time"></div></div>
-
-      <div class="play btn btn-secondary" data-music-target="play" data-action="click->music#play">Play</div>
-      <div class="pause btn btn-secondary" data-music-target="pause" data-action="click->music#pause">Pause</div>
-
-  <% else %>
-  <div class="warning">
-
-    music signed id not valid, try to re-create it.
-    </div>
-
-  <% end %>
-    <strong>Title:</strong>
     <%= music.name %>
 
+      <audio src = <%= rails_blob_url music.music_file %>, data-music-target="audio">
+       </audio>
 
+      <div class="card row">
+       <i class="play-button fa-solid fa-play"
+       data-music-target="playButton"
+       data-action="click->audio#sendCtx click->music#playButtonPressed "></i>
+
+      <canvas data-music-target="intensityCanvas"></canvas >
+        </div>
+
+  <% else %>
+    <div class="warning">
+      music signed id not valid, try to re-create it.
+    </div>
+  <% end %>
     <div class="music-file card">
     Src file:
     <%= music.music_file %>
+    <%= rails_blob_url music.music_file %>
     </div>
 
 </div>

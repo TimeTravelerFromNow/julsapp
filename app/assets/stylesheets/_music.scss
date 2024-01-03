@@ -3,6 +3,12 @@
 :root {
 
  .music {
+   margin-top: 3%;
+   margin-left: 3%;
+   margin-bottom: 3%;
+   margin-top: 3%;
+
+   background-color: --color-secondary;
 
    width: 90%;
    text-align: center;
@@ -31,6 +37,9 @@
     .music-file {
       font-size: 12px;
       background-color: gray;
+    }
+    .play-button {
+      margin: 3%;
     }
  }
 

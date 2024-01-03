@@ -14,12 +14,13 @@ FOREIGN KEY ("blob_id")
   REFERENCES "active_storage_blobs" ("id")
 );
 CREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest");
-CREATE TABLE IF NOT EXISTS "blog_posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "status" varchar, "kind" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE TABLE IF NOT EXISTS "elements" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "kind" varchar, "ext_link" varchar, "blog_post_id" integer, "position" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE TABLE IF NOT EXISTS "action_text_rich_texts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "body" text, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE UNIQUE INDEX "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts" ("record_type", "record_id", "name");
 CREATE TABLE IF NOT EXISTS "albums" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE TABLE IF NOT EXISTS "musics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "album_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+CREATE TABLE IF NOT EXISTS "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+CREATE TABLE IF NOT EXISTS "blog_posts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 INSERT INTO "schema_migrations" (version) VALUES
 ('20231125032411'),
 ('20231125032833'),
@@ -38,6 +39,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20231228183248'),
 ('20231228183417'),
 ('20231228183433'),
-('20231228183706');
+('20231228183706'),
+('20240103212254'),
+('20240103212430');
 
 
