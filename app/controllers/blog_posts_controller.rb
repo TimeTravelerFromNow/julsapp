@@ -4,6 +4,7 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts or /blog_posts.json
   def index
     @blog_posts = BlogPost.all
+    @categories = Category.all
   end
 
   # GET /blog_posts/1 or /blog_posts/1.json
@@ -40,10 +41,10 @@ class BlogPostsController < ApplicationController
   def update
     respond_to do |format|
       if @blog_post.update(blog_post_params)
-        format.html { redirect_to edit_blog_post_url(@blog_post), notice: "Blog post was successfully updated." }
+        format.html { redirect_to request.referrer, notice: "Blog post was successfully updated." }
         format.json { render :show, status: :ok, location: @blog_post }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to request.referrer, status: :unprocessable_entity }
         format.json { render json: @blog_post.errors, status: :unprocessable_entity }
       end
     end
@@ -67,6 +68,6 @@ class BlogPostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_post_params
-      params.require(:blog_post).permit(:title, :description, :status, :header_image, :element)
+      params.require(:blog_post).permit(:title, :description, :status, :header_image, :element, :category_id)
     end
 end

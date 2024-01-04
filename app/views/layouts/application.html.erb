@@ -2,12 +2,15 @@
 <html>
   <head>
     <title>Julsapp</title>
+    <%= Gon::Base.render_data %>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+     <%= include_gon %>
   </head>
 
   <body>
@@ -23,14 +26,13 @@
           <ul class="navbar-nav ml-md-auto mb-2 mb-lg-0 ">
 
 
-            <li><%= link_to "HOME",  home_page_index_path, class: 'nav-link active' %></li>
 
             <li><%= link_to "ALBUMS", albums_path,  class: 'nav-link active'%></li>
 
+            <li><%= link_to "HOME",  home_page_index_path, class: 'nav-link active' %></li>
 
             <li><%= link_to "BLOG", blog_posts_path, class: 'nav-link active'%></li>
 
-            <%= link_to "music", musics_index_path%>
             </ul>
           </div>
       </nav>
@@ -39,6 +41,12 @@
       <div class="<%= controller_name %> <%= action_name %>" data-controller="<%= controller_name %>">
 
         <%= yield %>
+
+        <div class="bottom">
+          <% if controller_name != "dashboard" %>
+          <%= link_to "ADMIN ONLY", dashboard_index_path, class: 'btn btn-danger' %>
+          <% end %>
+        </div>
         <canvas id="canvas"  data-background-target="backgroundCanvas" style="background: center" class="background" data-controller="background"  >
         </canvas>
 

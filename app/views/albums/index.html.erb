@@ -1,19 +1,15 @@
+
 <p style="color: green"><%= notice %></p>
 
-
-
-<div  id="albums" class="row">
-
+<div id="albums" class="dashboard-albums row">
   <% @albums.each do |album| %>
 
-
-  <%= link_to album, class:"album-img",
-  style:"--album-cover-image: url(#{ url_for(album.album_cover_image ) });" do %>
-  <div class="card album-name">
-    <%= album.name %>
+    <%= link_to album, class:"album-img album-cover",
+    style:"--album-cover-image: url(#{ url_for(album.album_cover_image ) });" do %>
+    <div class="album-name">
+      <%= album.name %>
     </div>
-  <% end %>
-
+    <% end %>
 
   <% end %>
 </div>

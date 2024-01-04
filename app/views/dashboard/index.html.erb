@@ -1,0 +1,52 @@
+
+
+
+<div class="row container">
+
+  <div id="categories">
+    <div class="h4 title"> blog categories </div>
+    <% @categories.each do |category| %>
+
+        <%= link_to edit_category_path(category) do %>
+          <%= render category %>
+        <% end %>
+
+    <% end %>
+    <div class=" category-new card">
+      New Category
+      <%= link_to new_category_path, class:"btn btn-primary fa-plus" do %>
+
+      <% end%>
+      </div>
+  </div>
+
+
+  <div  id="albums" class="album-dashboard card">
+
+      <div class="h4 title"> albums </div>
+    <% @albums.each do |album| %>
+
+
+    <%= link_to edit_album_path(album),
+     class:"album-img album-card",
+     style:"--album-cover-image: url(#{ url_for(album.album_cover_image ) });" do %>
+
+        <%= album.name %>
+    
+    <% end %>
+
+
+    <% end %>
+  </div>
+
+  </div>
+
+  <p style="color: green"><%= notice %></p>
+  <p style="color: white">
+  <%= BlogPost.public_count %> Public Articles and Counting!
+  </p>
+
+  <%= link_to "MUSIC", musics_index_path, class: 'btn btn-secondary'%>
+
+
+  <%= link_to "New blog post", new_blog_post_path, class: 'btn btn-secondary' %>

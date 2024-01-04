@@ -20,7 +20,7 @@ CREATE UNIQUE INDEX "index_action_text_rich_texts_uniqueness" ON "action_text_ri
 CREATE TABLE IF NOT EXISTS "albums" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE TABLE IF NOT EXISTS "musics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "album_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE TABLE IF NOT EXISTS "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
-CREATE TABLE IF NOT EXISTS "blog_posts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+CREATE TABLE IF NOT EXISTS "blog_posts" ("id" integer NOT NULL PRIMARY KEY, "title" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "category_id" integer);
 INSERT INTO "schema_migrations" (version) VALUES
 ('20231125032411'),
 ('20231125032833'),
@@ -41,6 +41,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20231228183433'),
 ('20231228183706'),
 ('20240103212254'),
-('20240103212430');
+('20240103212430'),
+('20240103223726');
 
 

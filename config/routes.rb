@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :categories
+  get 'dashboard/index'
+
   get 'elements/create'
   get 'elements/update'
   get 'elements/destroy'
@@ -15,6 +16,10 @@ Rails.application.routes.draw do
 
   resources :albums do
     resources :musics
+  end
+
+  resources :categories do
+    resources :blog_posts
   end
 
   get 'musics/index' => 'musics#index', as: :musics_index

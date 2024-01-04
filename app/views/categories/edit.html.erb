@@ -1,10 +1,26 @@
-<h1>Editing category</h1>
 
+<div class="row">
 <%= render "form", category: @category %>
 
-<br>
+<%= render "blogs_for", category: @category %>
+
+<div class="uncategorized-blog_posts card" >
+  <% @blog_posts.where(:category => nil).each do  |blog_post| %>
+
+      <%= form_with(model: [@category, blog_post]) do |form| %>
+      <%= render "blog_posts/bp_card", blog_post: blog_post %>
+
+        <%= form.hidden_field :category_id, value: @category.id %>
+        <%= form.hidden_field :category, value: @category %>
+        <%= form.submit "Move to " + @category.name, class: 'btn btn-dark' %>
+
+      <% end %>
+  <% end %>
+
+</div>
 
 <div>
   <%= link_to "Show this category", @category %> |
   <%= link_to "Back to categories", categories_path %>
+</div>
 </div>

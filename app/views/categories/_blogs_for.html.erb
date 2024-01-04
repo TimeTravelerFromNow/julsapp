@@ -1,0 +1,22 @@
+<div class="blogs-for-category card">
+  <% if category.blog_posts.count == 0 %>
+    <div class="card">
+      No blog_posts belonging to this category
+      </div>
+  <% else %>
+    <div class="bp-label h4">
+      <strong><%= category.name %></strong> blog posts
+      </div>
+
+    <% category.blog_posts.each do |bp| %>
+      <%= form_with(model: [category, bp]) do |form| %>
+      <%= render "blog_posts/bp_card", blog_post: bp %>
+
+        <%= form.hidden_field :category_id, value: nil %>
+        <%= form.hidden_field :category, value: nil %>
+        <%= form.submit "Remove from " + @category.name, class: 'btn btn-dark' %>
+
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -72,12 +72,13 @@ export default class extends Controller {
      canvas = this.backgroundCanvasTarget;
      ctx = canvas.getContext("2d");
 
+     canvas.height = document.documentElement.scrollHeight;
+    canvas.width = document.documentElement.scrollWidth;
+    
      bgGrad = ctx.createLinearGradient(0,0,0,canvas.height);
      bgGrad.addColorStop(0,"#000000");
      bgGrad.addColorStop(1,"#555666");
 
-     canvas.height = document.documentElement.scrollHeight;
-     canvas.width = document.documentElement.scrollWidth;
 
      // Initialize resize observer object
          let resizeObserver = new ResizeObserver(() => {

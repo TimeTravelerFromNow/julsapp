@@ -1,0 +1,56 @@
+:root {
+  @keyframes slideInLeft {
+      0% {
+        transform: translateY(-100%);
+        transform: translateZ(-100%);
+      }
+      100% {
+        transform: translateY(0);
+          transform: translateZ(-100%);
+      }
+    }
+    .category-header {
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-delay: 0s;
+      animation-iteration-count: 1;
+      animation-name: slideInLeft;
+
+      background: linear-gradient(10deg, rgba(90,90,90,100%) 0%, rgba(240, 240, 240, 95%) 95%);
+    }
+  .category {
+
+    border-right-style: solid;
+    border-right-width: thin;
+
+        margin-left: 3%;
+        margin-bottom: 1%;
+        .title {
+          justify-content: center;
+        }
+      .image {
+        height: 10%;
+        max-width: 90%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: scale-down;
+        background-position: center;
+        margin: 5%;
+      }
+  }
+
+}
+
+.categories.edit {
+  .category-form {
+    max-width: 38%;
+    margin: 3%;
+    background-color: white;
+  }
+  .blogs-for-category.card {
+    max-width: 28%;
+  }
+  .uncategorized-blog_posts.card {
+    max-width: 28%;
+  }
+}

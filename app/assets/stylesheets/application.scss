@@ -21,7 +21,7 @@ $primary: #5588ff;
 @import "album";
 @import "music";
 @import "font-awesome";
-
+@import "categories";
 
 .app-css.top-bar {
     .nav-link.active {
@@ -73,6 +73,10 @@ $primary: #5588ff;
 
     border-color: white;
     background: linear-gradient(60deg, rgba(0,0,0,100%) 0%, rgba(105, 105, 105, 95%) 95%);
+
+    #navbarSupportedContent {
+     justify-content: center;
+    }
 }
 
 .background{

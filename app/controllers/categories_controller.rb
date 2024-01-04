@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
+    @blog_posts = BlogPost.where(category: @category)
   end
 
   # GET /categories/new
@@ -17,6 +18,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @blog_posts = BlogPost.all
   end
 
   # POST /categories or /categories.json
@@ -25,7 +27,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to category_url(@category), notice: "Category was successfully created." }
+        format.html { redirect_to dashboard_index_path, notice: "Category was successfully created." }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,6 +58,15 @@ class CategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bp_category
+    if params[:id] == 0
+      @blog_posts_category = nil
+      redirect_to  request.referrer
+    end
+    @blog_posts_category = Category.find(params[:id])
+    redirect_to  request.referrer
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -65,6 +76,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:name, :description)
+      params.require(:category).permit(:name, :description, :category_image, :blog_post)
     end
 end
