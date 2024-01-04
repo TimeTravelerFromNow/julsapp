@@ -11,22 +11,30 @@
   }
 
 
-  .album-dashboard {
-    .album-card {
-      height: 100px;
-      margin: 1%;
-      padding: 2%;
-      text-emphasis-color: red;
-      color: red;
-    }
-  }
 }
 
 .dashboard.index {
-  .dashboard-panel {
+  .album-card {
+      height: 290px;
+      margin-right: 3%;
+      margin-bottom: 3%;
 
-    min-width: 216px;
+      .title {
+        font-size: 18px;
+        text-align: center;
+        background-color: white;
+      }
+
+  } // end album card
+  .dashboard-panel {
+    margin: 1%;
+
+    min-width: 512px;
     max-width: 30%;
-    background-color: darkgray;
+    background-color: white;
   }
-}
+
+    .album-dashboard {
+
+    }
+  }

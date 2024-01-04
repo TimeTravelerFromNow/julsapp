@@ -1,7 +1,7 @@
 
 
 
-<div class=" d-flex flex-row fluid">
+<div class=" row d-flex flex-row " style="margin-left: 4%">
 
   <div id="categories" class="dashboard-panel col-sm">
     <div class="h4 title"> blog categories </div>
@@ -26,17 +26,22 @@
       <div class="h4 title"> albums </div>
     <% @albums.each do |album| %>
 
-
-    <%= link_to edit_album_path(album),
-     class:"album-img album-card",
-     style:"--album-cover-image: url(#{ url_for(album.album_cover_image ) });" do %>
+    <%= link_to edit_album_path(album) do %>
+    <div class = "album-card album-img" style ="--album-cover-image: url(<%= url_for(album.album_cover_image ) %>);">
 
         <%= album.name %>
 
+        </div>
     <% end %>
 
-
     <% end %>
+
+    <div class=" category-new card">
+      New Album
+      <%= link_to new_album_path, class:"btn btn-primary fa-plus" do %>
+
+      <% end%>
+      </div>
   </div>
 
 
