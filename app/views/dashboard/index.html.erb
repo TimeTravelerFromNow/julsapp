@@ -1,9 +1,9 @@
 
 
 
-<div class="row container">
+<div class=" d-flex flex-row fluid">
 
-  <div id="categories">
+  <div id="categories" class="dashboard-panel col-sm">
     <div class="h4 title"> blog categories </div>
     <% @categories.each do |category| %>
 
@@ -21,7 +21,7 @@
   </div>
 
 
-  <div  id="albums" class="album-dashboard card">
+  <div  id="albums" class="dashboard-panel col-sm">
 
       <div class="h4 title"> albums </div>
     <% @albums.each do |album| %>
@@ -32,14 +32,30 @@
      style:"--album-cover-image: url(#{ url_for(album.album_cover_image ) });" do %>
 
         <%= album.name %>
-    
+
     <% end %>
 
 
     <% end %>
   </div>
 
+
+
+  <div id="musics" class="dashboard-panel col-sm">
+  <h1>Musics</h1>
+  <p> <%= @musics.count %> Songs </p>
+  <p style="color: green"><%= notice %></p>
+  <div id="musics" class="row" data-controller="audio">
+    <% @musics.each do |music| %>
+      <% if music.persisted? %>\
+
+        <%= render  music %>
+      <% end %>
+    <% end %>
   </div>
+</div>
+
+</div>
 
   <p style="color: green"><%= notice %></p>
   <p style="color: white">

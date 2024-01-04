@@ -1,16 +1,17 @@
 :root {
   #categories {
-    margin: 4%;
-    background-color: white;
-    max-width: 33%;
-
+    .category-new.card {
+      margin: 1%;
+    }
+  }
+  #musics {
     .category-new.card {
       margin: 1%;
     }
   }
 
+
   .album-dashboard {
-    width: 30%;
     .album-card {
       height: 100px;
       margin: 1%;
@@ -18,5 +19,14 @@
       text-emphasis-color: red;
       color: red;
     }
+  }
+}
+
+.dashboard.index {
+  .dashboard-panel {
+
+    min-width: 216px;
+    max-width: 30%;
+    background-color: darkgray;
   }
 }
