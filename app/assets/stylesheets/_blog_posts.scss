@@ -7,7 +7,7 @@
         max-width: inherit;
         max-height: inherit;
 
-        margin-bottom: 1%;
+        margin-bottom: 4%;
         width: 216px;
         height: 216px;
         border-color: black;
@@ -25,7 +25,6 @@
       }
 
       .header-img {
-              margin: 1%;
               height: 200px;
               width: 100%;
               background-repeat: no-repeat;
@@ -48,6 +47,10 @@
 .blog_posts.index {
   .uncategorized-blogs.card {
     max-width: 25%;
+  }
+  #blog_posts {
+    margin-left: 4%;
+    margin-right: 4%;
   }
 }
 

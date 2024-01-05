@@ -5,6 +5,10 @@
 <%= render "blogs_for", category: @category %>
 
 <div class="uncategorized-blog_posts card" >
+
+    <div class="bp-label h4">
+      <strong>unsorted</strong> blog posts
+      </div>
   <% @blog_posts.where(:category => nil).each do  |blog_post| %>
 
       <%= form_with(model: [@category, blog_post]) do |form| %>
@@ -20,7 +24,9 @@
 </div>
 
 <div>
-  <%= link_to "Show this category", @category %> |
-  <%= link_to "Back to categories", categories_path %>
+  <%= link_to "Visitor #{ @category.name } Page", @category, class: "btn btn-primary" %> 
+  <%= link_to "Back to Admin Dashboard", dashboard_index_path, class: "btn btn-primary" %>
+
+  <%= button_to "Destroy this category", @category, method: :delete %>
 </div>
 </div>

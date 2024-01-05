@@ -15,7 +15,6 @@
  */
 $primary: #5588ff;
 
-
 @import "bootstrap";
 @import "home_page";
 @import "album";
@@ -79,6 +78,19 @@ $primary: #5588ff;
     }
 }
 
+.visitor-message
+{
+  color: orange;
+  padding: 1%;
+  margin: 1%;
+}
+
+.bottom {
+ position: absolute;
+ top: 100%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+}
 .background{
     color: #999999;
     position: absolute;

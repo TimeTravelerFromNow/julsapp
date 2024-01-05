@@ -1,6 +1,5 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @category %>
+<%= render "category_header", category: @category %>
 
 <div id="blog_posts">
 
@@ -10,11 +9,12 @@
         <%= render "blog_posts/bp_card", blog_post: blog_post %>
       <% end %>
     <% end %>
-
+    <% if @blog_posts.count == 0 %>
+    <div class="card visitor-message"> No blog posts belong to this category yet...check back when the admin has updated the page! </div>
+    <% end %>
 </div>
 <div>
   <%= link_to "Edit this category", edit_category_path(@category) %> |
   <%= link_to "Back to categories", categories_path %>
 
-  <%= button_to "Destroy this category", @category, method: :delete %>
 </div>

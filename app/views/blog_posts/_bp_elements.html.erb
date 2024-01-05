@@ -1,6 +1,7 @@
 
 <% blog_post.elements.each do |element| %>
 
+<% if element.persisted? %>
 <% if element.paragraph? %>
 <div class="paragraph mb-3 mb-4" data-controller="paragraph">
               <div class="paragraph-content" data-action="click->paragraph#click">
@@ -50,6 +51,9 @@
               </div>
 <% end %>
 
-
+<% else %>
+ <div class="card" style="background-color: gray" >
+   it's a fugazi its a wuuzi </div>
+<%  end %>
 
 <% end %>

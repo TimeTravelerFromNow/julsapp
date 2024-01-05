@@ -1,6 +1,4 @@
 
-
-
 <div class=" row d-flex flex-row " style="margin-left: 4%">
 
   <div id="categories" class="dashboard-panel col-sm">
@@ -52,8 +50,7 @@
   <p style="color: green"><%= notice %></p>
   <div id="musics" class="row" data-controller="audio">
     <% @musics.each do |music| %>
-      <% if music.persisted? %>\
-
+      <% if music.persisted? %>
         <%= render  music %>
       <% end %>
     <% end %>

@@ -1,5 +1,8 @@
 
 <div class="category-form">
+
+<h4 class="card"> editing category: <strong> <%= category.name %> </strong> </h4>
+
 <%= form_with(model: category) do |form| %>
   <% if category.errors.any? %>
     <div style="color: red">
@@ -14,7 +17,7 @@
   <% end %>
 
   <div>
-    <%= form.label "Category", style: "display: block", class:"h4" %>
+    <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
@@ -28,7 +31,8 @@
   <%= form.file_field :category_image, class: 'form-control' %>
   <% if category.category_image.present? %>
     <small>current image:</small>
-    <%= image_tag(category.category_image , width: '100%') %>
+    <br>
+    <%= image_tag(category.category_image, class:"category-image") %>
   <% end %>
   </div>
   <div>
