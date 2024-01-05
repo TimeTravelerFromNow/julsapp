@@ -1,15 +1,18 @@
 
 <p style="color: green"><%= notice %></p>
 
-<div id="albums" class="dashboard-albums row">
+<div id="albums" class=" row d-flex flex-row justify-content-center">
   <% @albums.each do |album| %>
+<%= link_to album , class: "col-sm card album-cover album-img", style:"--album-cover-image: url(#{ url_for(album.album_cover_image ) });" do %>
 
-    <%= link_to album, class:"album-img album-cover",
-    style:"--album-cover-image: url(#{ url_for(album.album_cover_image ) });" do %>
-    <div class="album-name">
-      <%= album.name %>
+
+    <div class="album-spacer">
     </div>
-    <% end %>
+      <div class=" d-flex flex-column">
+        <h5 class='card album-name mb-1 text-dark'><%= album.name %></h5>
+      </div>
 
+
+<% end %>
   <% end %>
 </div>

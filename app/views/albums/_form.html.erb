@@ -1,5 +1,5 @@
 
-<div class= "form-card" style="">
+<div class= "form-card" >
   <p style="color: green"><%= notice %></p>
 <%= form_with(model: album) do |form| %>
   <% if album.errors.any? %>
@@ -14,15 +14,14 @@
     </div>
   <% end %>
 
-  <% if @album.album_cover_image.present? %>
-
-    <div class="album-img" style="background-image: url(<%= url_for(@album.album_cover_image) %>);">
-    </div>
-  <% end %>
 
   <div class="cover-image-upload card">
-    <%= form.label :album_cover_image, style: "display: block" %>
-    <%= form.file_field :album_cover_image %>
+
+      <% if @album.album_cover_image.present? %>
+      <%= image_tag @album.album_cover_image, height: "216px", style: "object-fit: scale-down;" %>
+      <% end %>
+      <%= form.label :album_cover_image, style: "display: block" %>
+      <%= form.file_field :album_cover_image %>
     </div>
 
   <div>

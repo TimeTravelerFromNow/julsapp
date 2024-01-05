@@ -3,10 +3,10 @@
 <div class="col">
 <div class="row category-header" >
 <% @categories.each do |category| %>
-<div class="blogs-column" style="max-width: 30%;">
+<div class="blogs-column row d-flex flex-row" style="max-width: 30%;">
 
-   <%= link_to category_path(category) do %>
-    <div class="category-title h3" >
+   <%= link_to category_path(category), class: "col-sm" do %>
+    <div class="category-title h5" >
       <%= category.name.upcase %>
     </div>
    <% end %>
@@ -19,7 +19,7 @@
 
     <% @blog_posts.order(created_at: :desc).each do |blog_post| %>
 
-      <%= link_to blog_post_path(blog_post), class: 'text-decoration-none col-sm' do  %>
+      <%= link_to blog_post_path(blog_post), class: 'text-decoration-none col-sm blog_post card' do  %>
         <%= render "bp_card", blog_post: blog_post %>
       <% end %>
     <% end %>
