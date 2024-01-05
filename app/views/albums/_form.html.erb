@@ -22,11 +22,16 @@
       <% end %>
       <%= form.label :album_cover_image, style: "display: block" %>
       <%= form.file_field :album_cover_image %>
-    </div>
+  </div>
 
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
+  </div>
+
+  <div class="album-story-field card">
+      <%= form.label :story %>
+      <%= form.rich_text_area :story %>
   </div>
 
   <div>

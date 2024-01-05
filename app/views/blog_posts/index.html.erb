@@ -1,19 +1,8 @@
 
 
 <div class="col">
-<div class="row category-header" >
-<% @categories.each do |category| %>
-<div class="blogs-column row d-flex flex-row" style="max-width: 30%;">
 
-   <%= link_to category_path(category), class: "col-sm" do %>
-    <div class="category-title h5" >
-      <%= category.name.upcase %>
-    </div>
-   <% end %>
-</div>
-<% end %>
-
-</div>
+<%= render "categories/categories_banner", categories: @categories %>
 
 <div id="blog_posts" class=" row d-flex flex-row justify-content-center">
 

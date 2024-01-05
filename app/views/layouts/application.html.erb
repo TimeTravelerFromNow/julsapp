@@ -42,11 +42,13 @@
 
         <%= yield %>
 
-        <div class="bottom">
+
           <% if controller_name == "home_page" %>
-          <%= link_to "ADMIN ONLY", dashboard_index_path, class: 'btn btn-danger bottom' %>
-          <% end %>
+          <div class="bottom">
+          <%= link_to "ADMIN", dashboard_index_path, class: 'btn btn-danger bottom' %>
+
         </div>
+          <% end %>
         <canvas id="canvas"  data-background-target="backgroundCanvas" style="background: center" class="background" data-controller="background"  >
         </canvas>
 

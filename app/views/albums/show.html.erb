@@ -1,7 +1,7 @@
 
-<p style="color: green"><%= notice %></p>
+<div class="d-flex">
 
-<div class="card col col-md-2">
+<div class="album-card card col col-md-2 col-sm">
 
   <div class="album-img header-img" style="
     --album-cover-image: url(<%= url_for(@album.album_cover_image) %>)">
@@ -17,23 +17,21 @@
       <% end %>
     </div>
 
+    <div>
+      <%= @album.story %>
+      </div>
 
+      <%= link_to "Back to albums", albums_path, class:"btn btn-primary" %>
+</div>
+
+<div  class="other-albums col-sm" style="max-width: 20%;">
+  <h4 class="card">My other Albums: </h4>
+  <% @albums.order(created_at: :desc).excluding(@album).each do |album| %>
+    <div style="max-width: 60%;">
+    <%= render "album_cover", album: album %>
+    </div>
+  <% end %>
 
 </div>
 
-
-
-
-<div class="actions">
-<%= link_to "Edit this album", edit_album_path(@album) %> |
-
-
-<%= button_to "Destroy this album", @album, method: :delete %>
-</div>
-</div>
-
-
-
-  <div class="bottom">
-      <%= link_to "Back to albums", albums_path %>
 </div>

@@ -6,8 +6,9 @@ export default class extends Controller {
   static audioPlay = () => {}
 
   ctx = undefined;
-  width = 420
-  height = 80
+  width = 400;
+  height = 100;
+  aIntensity = undefined;
 
   audioTargetConnected(element) {
     //console.log(element, "connected")
@@ -21,13 +22,48 @@ export default class extends Controller {
 
   setupCanvas() {
     if ( !this.hasIntensityCanvasTarget ) { console.log("music_controller.js::intensity canvas not found"); return;}
-
-    this.intensityCanvasTarget.width = this.width
-    this.intensityCanvasTarget.height = this.height;
+ const dpr = window.devicePixelRatio || 1;
     this.ctx = this.intensityCanvasTarget.getContext("2d")
-    this.ctx.fillStyle = "rgb(200,100, 100)"
-    this.ctx.fillRect(10,10,50, 50)
+    this.ctx.scale(dpr, dpr);
+
+    const canvas = this.intensityCanvasTarget;
+    canvas.width = this.width
+    canvas.height = this.height
+    // draw the line segments
+  const padding = 20;
+  const sC = 100;
+  const width = canvas.width / sC;
+
+  const data = this.generateNoise( sC)
+  const midPoint = canvas.offsetHeight / 2;
+  for (let i = 1; i < sC; i++) {
+    const x = width * i;
+    const height = Math.abs(data[i] * canvas.height )  ;
+    this.drawLineSegment(this.ctx, x, height, midPoint, width, (i + 1) % 2);
   }
+  }
+
+  generateNoise(c) {
+    let arr = Array(c).fill(0)
+    for(let i = 0; i < c; i++ ) {
+      arr[i] = Math.random() - 0.5;
+    }
+    return arr
+  }
+
+  drawLineSegment(ctx, x, y, mP, width, isEven) {
+    ctx.beginPath();
+
+    ctx.lineWidth = 1; // how thick the line is
+    ctx.strokeStyle = "#f81"; // what color our line is
+    y = isEven ? y : -y;
+    ctx.moveTo(x, mP);
+    ctx.lineTo(x, mP + y);
+    ctx.arc(x + width / 2, mP + y, width / 2, Math.PI, 0, isEven);
+    ctx.lineTo(x + width, mP);
+    ctx.stroke();
+
+  };
 
   generateIntensityMap({ detail: { content } }){
     console.log("making intensity map from context ")

@@ -8,6 +8,8 @@
 
   # GET /albums/1 or /albums/1.json
   def show
+
+      @albums = Album.all
   end
 
   # GET /albums/new
@@ -67,6 +69,6 @@
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:name, :album_cover_image, :music)
+      params.require(:album).permit(:name, :album_cover_image, :music, :story)
     end
 end

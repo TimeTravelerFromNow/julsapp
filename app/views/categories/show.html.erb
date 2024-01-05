@@ -1,4 +1,7 @@
 
+<div class="col">
+<%= render "categories_banner", categories: @categories %>
+
 <%= render "category_header", category: @category %>
 
 <div id="blog_posts">
@@ -17,4 +20,5 @@
   <%= link_to "Edit this category", edit_category_path(@category) %> |
   <%= link_to "Back to categories", categories_path %>
 
+</div>
 </div>

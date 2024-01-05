@@ -55,7 +55,11 @@
 }
   .albums.show {
 
+    .album-card {
+      margin-left: 4%;
 
+      min-width: 70%;
+    }
     .header-img {
     display: block;
             margin-left: auto;
@@ -66,6 +70,9 @@
             background-repeat: no-repeat;
             object-fit: scale-down;
             background-position: center;
+    }
+    .other-albums {
+      min-width: 30%;
     }
   }
 
@@ -79,5 +86,10 @@
       margin-right: 10%;
       max-width: 80%;
       background-color: orange;
+    }
+    .album-story-field {
+      background: white;
+      text-align: left;
+      width: 80%;
     }
   }// .albums.edit
