@@ -1,5 +1,5 @@
 
-<div id="<%= dom_id music %>" class="music" data-controller="music" data-action="music:playButtonPressed->audio#playPressed"">
+<div id="<%= dom_id music %>" class="music" data-controller="music" data-action="music:playButtonPressed->audio#playPressed  audio:connect->music#makeIntensity">
   <% if (music.music_file.signed_id) %>
 
 
@@ -9,11 +9,19 @@
        </audio>
 
       <div class="card row">
-       <i class="play-button fa-solid fa-play"
-       data-music-target="playButton"
-       data-action="click->audio#sendCtx click->music#playButtonPressed "></i>
+        <div class="col">
+
+          <i class="fa-solid fa-backward-step"
+          data-music-target="startButton"
+          data-action="click->music#restartPressed"></i>
+          <i class="play-button fa-solid fa-play"
+          data-music-target="playButton"
+          data-action="click->music#playButtonPressed"></i>
+
+          </div>
+
        <div>
-      <canvas data-music-target="intensityCanvas"></canvas >
+      <canvas class="col md-5 " data-music-target="intensityCanvas"></canvas >
         </div>
         </div>
 

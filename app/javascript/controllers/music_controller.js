@@ -3,11 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "playButton", "intensityCanvas", "audio" ]
 
-  static audioPlay = () => {}
-
+  audioPlay = () => {}
   ctx = undefined;
   width = 400;
   height = 100;
+  sampleCount = 140;
   aIntensity = undefined;
 
   audioTargetConnected(element) {
@@ -17,12 +17,13 @@ export default class extends Controller {
   connect() {
     console.log("controller is: ", this.identifier);
     console.log("targets are", this.targets);
+
     this.setupCanvas();
   }
 
   setupCanvas() {
     if ( !this.hasIntensityCanvasTarget ) { console.log("music_controller.js::intensity canvas not found"); return;}
- const dpr = window.devicePixelRatio || 1;
+    const dpr = window.devicePixelRatio || 1;
     this.ctx = this.intensityCanvasTarget.getContext("2d")
     this.ctx.scale(dpr, dpr);
 
@@ -30,17 +31,20 @@ export default class extends Controller {
     canvas.width = this.width
     canvas.height = this.height
     // draw the line segments
-  const padding = 20;
-  const sC = 100;
-  const width = canvas.width / sC;
+    const padding = 20;
+    const sC = this.sampleCount;
+    const width = canvas.width / sC;
 
-  const data = this.generateNoise( sC)
-  const midPoint = canvas.offsetHeight / 2;
-  for (let i = 1; i < sC; i++) {
-    const x = width * i;
-    const height = Math.abs(data[i] * canvas.height )  ;
-    this.drawLineSegment(this.ctx, x, height, midPoint, width, (i + 1) % 2);
-  }
+    var data = this.aIntensity
+    if (data == undefined) {
+      data = this.generateNoise( this.sampleCount)
+    }
+    const midPoint = canvas.offsetHeight / 2;
+    for (let i = 1; i < sC; i++) {
+      const x = width * i;
+      const height = Math.abs(data[i] * canvas.height )  ;
+      this.drawLineSegment(this.ctx, x, height, midPoint, width, (i + 1) % 2);
+    }
   }
 
   generateNoise(c) {
@@ -62,25 +66,7 @@ export default class extends Controller {
     ctx.arc(x + width / 2, mP + y, width / 2, Math.PI, 0, isEven);
     ctx.lineTo(x + width, mP);
     ctx.stroke();
-
   };
-
-  generateIntensityMap({ detail: { content } }){
-    console.log("making intensity map from context ")
-    // Set up audio context
-    const audioContext = content;
-
-    let audioBuffer = null;
-
-    var url = this.audioTarget.src;
-    const visualizeAudio = url => {
-      fetch(url)
-      .then(response => response.arrayBuffer())
-      .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-      .then(audioBuffer => visualize(audioBuffer));
-    };
-
-  }
 
   updateTimeBar() {
     // Get the value of what second the song is at
@@ -88,14 +74,23 @@ export default class extends Controller {
     // time of song
     let audioLength = this.audioTarget.duration;
     // Assign a width to an element at time
-    this.ctx.fillRect(10,10,(audioTime * 100) / audioLength + '%', 50)
+
+    this.ctx.fillStyle = "red";
+
+   // this.ctx.fillRect(0, 0, canvas.width, canvas.height);
+    this.ctx.fillRect(0,0, (this.intensityCanvasTarget.width * audioTime) / audioLength, this.intensityCanvasTarget.height)
   }
 
   playButtonPressed()
   {
     this.audioPlay = setInterval(() => this.updateTimeBar(), 1); // () => method() is NECESSARY
 
-    this.dispatch("playButtonPressed", { detail: { content: [this.audioTarget, this.playButtonTarget ] } })
+    this.dispatch("playButtonPressed", { detail: { content: [this.audioTarget, this.playButtonTarget, this.aIntensity, this.audioPlay ] } })
+  }
+
+  restartPressed() {
+    console.log("restartPressed")
+    this.dispatch("restartPressed", { detail: { content: [this.audioTarget, this.playButtonTarget, this.aIntensity, this.audioPlay ] } })
   }
 
   pause()

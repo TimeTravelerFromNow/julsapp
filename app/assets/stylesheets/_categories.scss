@@ -43,11 +43,28 @@
   }
 }
 
-.category.show {
+.categories.show {
+  .category-header {
+    --categoryImg: url_for();
+    background-image: var(--categoryImg);
+      min-height: 50px;
+      max-height: 150px;
+      margin: 4%;
 
-  .category-image {
-    height: 54px;
-    margin: 1%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      object-fit: scale-down;
+      background-position: center;
+      background-color: rgba(0,0,0,0);
+background-size: cover;
+background-position: center;
+        .title.card {
+          justify-content: center;
+          text-align: center;
+          min-height: 200px;
+
+        }
+
   }
 }
 

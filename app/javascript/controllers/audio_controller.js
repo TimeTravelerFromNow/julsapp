@@ -13,17 +13,15 @@ export default class extends Controller {
   }
 
   connect() {
-    this.aCtx = window.audioCtx || window.webkitAudioContext;
-    this.aCtx = new AudioContext();
-  }
-
-  sendCtx() {
-    console.log("sending audio ctx to music controller")
-    this.dispatch("sendCtx", { detail: { content: this.aCtx } })
+    window.audioContext = window.AudioCtx || window.webkitAudioContext;
+    this.aCtx = new AudioContext()
   }
 
   disconnect() {
-    this.aCtx.close()
+    if (this.aCtx) {
+
+      this.aCtx.close()
+    }
   }
 
   updateTimeBar() {
@@ -33,8 +31,16 @@ export default class extends Controller {
   {
 
   }
+
+  restartPressed({ detail: {content} } ){
+
+
+    playPressed( { detail: {content} } )
+  }
+
   playPressed({ detail: { content } }){
     var pausedBefore = false
+
     if( this.audioT != undefined) {
       pausedBefore = ( this.audioT.paused )
 

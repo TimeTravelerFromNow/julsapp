@@ -10,12 +10,16 @@
         <% end %>
 
     <% end %>
+
+    <strong><%= BlogPost.public_count %></strong> Public Articles and <strong><%= Category.all.count %></strong> Categories.
+
     <div class=" category-new card">
       New Category
       <%= link_to new_category_path, class:"btn btn-primary fa-plus" do %>
 
       <% end%>
       </div>
+
   </div>
 
 
@@ -59,10 +63,6 @@
 
 </div>
 
-  <p style="color: green"><%= notice %></p>
-  <p style="color: white">
-  <%= BlogPost.public_count %> Public Articles and Counting!
-  </p>
 
   <%= link_to "MUSIC", musics_index_path, class: 'btn btn-secondary'%>
 

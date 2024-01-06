@@ -1,5 +1,4 @@
 
-<div class="col">
 <%= render "categories_banner", categories: @categories %>
 
 <%= render "category_header", category: @category %>
@@ -8,7 +7,7 @@
 
     <% @blog_posts.each do  |blog_post| %>
 
-      <%= link_to blog_post_path(blog_post), class: 'text-decoration-none' do  %>
+      <%= link_to blog_post_path(blog_post), class: 'blog_post card text-decoration-none' do  %>
         <%= render "blog_posts/bp_card", blog_post: blog_post %>
       <% end %>
     <% end %>
@@ -20,5 +19,4 @@
   <%= link_to "Edit this category", edit_category_path(@category) %> |
   <%= link_to "Back to categories", categories_path %>
 
-</div>
 </div>
