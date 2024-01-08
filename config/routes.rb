@@ -10,17 +10,22 @@ Rails.application.routes.draw do
   get 'musics/update'
   get 'musics/show'
 
-  resources :blog_posts do
-    resources :elements
-  end
 
-  resources :albums do
-    resources :musics
-  end
+  scope module: "admin" do
+    resources :albums do
+      resources :musics
+    end
 
-  resources :categories do
-    resources :blog_posts
-  end
+    resources :blog_posts do
+      resources :elements
+    end
+
+    resources :categories do
+      resources :blog_posts
+    end
+  end # admin
+
+
 
   get 'musics/index' => 'musics#index', as: :musics_index
   patch "musics/:id" => "musics#update", as: "music"

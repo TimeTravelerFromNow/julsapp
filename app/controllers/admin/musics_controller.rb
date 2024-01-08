@@ -1,4 +1,5 @@
-class MusicsController < ApplicationController
+module Admin
+class MusicsController < AdminController
   before_action :set_music, only: %i[ show edit update destroy ]
 
   # GET /musics or /musics.json
@@ -100,3 +101,4 @@ class MusicsController < ApplicationController
       params.require(:music).permit(:name, :music_file, :single_cover_image, :album_id)
     end
 end
+end # module Admin

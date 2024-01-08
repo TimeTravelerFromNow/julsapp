@@ -1,4 +1,5 @@
-class BlogPostsController < ApplicationController
+module Admin
+class BlogPostsController < AdminController
   before_action :set_blog_post, only: %i[ show edit update destroy ]
 
   # GET /blog_posts or /blog_posts.json
@@ -71,3 +72,4 @@ class BlogPostsController < ApplicationController
       params.require(:blog_post).permit(:title, :description, :status, :header_image, :element, :category_id)
     end
 end
+end # module Admin
