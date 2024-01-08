@@ -58,7 +58,12 @@
     margin-right: 4%;
   }
 }
-
+.blog_posts.show {
+  .post-card {
+    margin-right: 5%;
+    margin-left: 10%;
+  }
+}
 .blog_posts.edit {
   .blog_post-content {
 

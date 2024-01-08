@@ -4,27 +4,10 @@
 
 <%= render "blogs_for", category: @category %>
 
-<div class="uncategorized-blog_posts card" >
-
-    <div class="bp-label h4">
-      <strong>unsorted</strong> blog posts
-      </div>
-  <% @blog_posts.where(:category => nil).each do  |blog_post| %>
-
-      <%= form_with(model: [@category, blog_post]) do |form| %>
-      <%= render "blog_posts/bp_card", blog_post: blog_post %>
-
-        <%= form.hidden_field :category_id, value: @category.id %>
-        <%= form.hidden_field :category, value: @category %>
-        <%= form.submit "Move to " + @category.name, class: 'btn btn-dark' %>
-
-      <% end %>
-  <% end %>
-
-</div>
+<%= render "uncategorized_blogs", blog_posts: @blog_posts %>
 
 <div>
-  <%= link_to "Visitor #{ @category.name } Page", @category, class: "btn btn-primary" %> 
+  <%= link_to "Visitor #{ @category.name } Page", @category, class: "btn btn-primary" %>
   <%= link_to "Back to Admin Dashboard", dashboard_index_path, class: "btn btn-primary" %>
 
   <%= button_to "Destroy this category", @category, method: :delete %>

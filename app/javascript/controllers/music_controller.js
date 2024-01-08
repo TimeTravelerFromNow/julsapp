@@ -7,12 +7,9 @@ export default class extends Controller {
   ctx = undefined;
   width = 400;
   height = 100;
-  sampleCount = 140;
+  sampleCount = 50;
   aIntensity = undefined;
-
-  audioTargetConnected(element) {
-    //console.log(element, "connected")
-  }
+  randomData = undefined;
 
   connect() {
     console.log("controller is: ", this.identifier);
@@ -25,25 +22,30 @@ export default class extends Controller {
     if ( !this.hasIntensityCanvasTarget ) { console.log("music_controller.js::intensity canvas not found"); return;}
     const dpr = window.devicePixelRatio || 1;
     this.ctx = this.intensityCanvasTarget.getContext("2d")
+
     this.ctx.scale(dpr, dpr);
 
-    const canvas = this.intensityCanvasTarget;
-    canvas.width = this.width
-    canvas.height = this.height
     // draw the line segments
+
+    this.randomData = this.generateNoise( this.sampleCount)
+    this.updateCanvas()
+  }
+  updateCanvas(progress = 1, lW = 1) {
+    const canvas = this.intensityCanvasTarget;
+
     const padding = 20;
     const sC = this.sampleCount;
-    const width = canvas.width / sC;
-
+    const width = canvas.offsetWidth / sC;
+    // draw the stars
     var data = this.aIntensity
     if (data == undefined) {
-      data = this.generateNoise( this.sampleCount)
+      data = this.randomData
     }
-    const midPoint = canvas.offsetHeight / 2;
-    for (let i = 1; i < sC; i++) {
+    const midPoint = canvas.height / 2;
+    for (let i = 1; i < sC * progress; i++) {
       const x = width * i;
-      const height = Math.abs(data[i] * canvas.height )  ;
-      this.drawLineSegment(this.ctx, x, height, midPoint, width, (i + 1) % 2);
+      const height = Math.abs(data[i] * canvas.offsetHeight )  ;
+      this.drawLineSegment(this.ctx, x, height, midPoint, width, (i + 1) % 2, lW);
     }
   }
 
@@ -55,10 +57,10 @@ export default class extends Controller {
     return arr
   }
 
-  drawLineSegment(ctx, x, y, mP, width, isEven) {
+  drawLineSegment(ctx, x, y, mP, width, isEven, lW) {
     ctx.beginPath();
 
-    ctx.lineWidth = 1; // how thick the line is
+    ctx.lineWidth = lW; // how thick the line is
     ctx.strokeStyle = "#f81"; // what color our line is
     y = isEven ? y : -y;
     ctx.moveTo(x, mP);
@@ -73,29 +75,44 @@ export default class extends Controller {
     let audioTime = this.audioTarget.currentTime;
     // time of song
     let audioLength = this.audioTarget.duration;
-    // Assign a width to an element at time
-
-    this.ctx.fillStyle = "red";
-
-   // this.ctx.fillRect(0, 0, canvas.width, canvas.height);
-    this.ctx.fillRect(0,0, (this.intensityCanvasTarget.width * audioTime) / audioLength, this.intensityCanvasTarget.height)
+    let progress = audioTime / audioLength;
+    this.updateCanvas(progress)
   }
 
+  clearCanvas() {
+
+      this.ctx.fillStyle = "white";
+      this.ctx.fillRect(0, 0, this.intensityCanvasTarget.width, this.intensityCanvasTarget.height);
+  }
   playButtonPressed()
   {
+    this.clearCanvas()
     this.audioPlay = setInterval(() => this.updateTimeBar(), 1); // () => method() is NECESSARY
 
-    this.dispatch("playButtonPressed", { detail: { content: [this.audioTarget, this.playButtonTarget, this.aIntensity, this.audioPlay ] } })
+    this.dispatch("playButtonPressed", { detail:
+      {
+       content: { "audioTarget": this.audioTarget,
+                  "playButton": this.playButtonTarget,
+                  "intensity": this.aIntensity,
+                  "count": this.sampleCount,
+                  "play": this.audioPlay,
+                  "self": this} } })
   }
 
   restartPressed() {
+    this.clearCanvas()
+    if( this.aIntensity != undefined ) {
+      this.updateCanvas(1, 0.4)
+    }
     console.log("restartPressed")
-    this.dispatch("restartPressed", { detail: { content: [this.audioTarget, this.playButtonTarget, this.aIntensity, this.audioPlay ] } })
-  }
+    this.audioPlay = setInterval(() => this.updateTimeBar(), 1); // () => method() is NECESSARY
 
-  pause()
-  {
-    this.audioTarget.pause();
-    clearInterval(this.audioPlay);
+    this.dispatch("restartPressed", { detail: {
+      content: { "audioTarget": this.audioTarget,
+               "playButton": this.playButtonTarget,
+               "intensity": this.aIntensity,
+               "count": this.sampleCount,
+               "play": this.audioPlay,
+               "self": this} } })
   }
 }

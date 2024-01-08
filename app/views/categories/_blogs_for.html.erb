@@ -10,11 +10,19 @@
 
     <% category.blog_posts.each do |bp| %>
       <%= form_with(model: [category, bp]) do |form| %>
+
+
       <%= render "blog_posts/bp_card", blog_post: bp %>
+
+      <p style="color: <%= bp.status_color %>">
+      <%= bp.status %>
+      </p>
+
 
         <%= form.hidden_field :category_id, value: nil %>
         <%= form.hidden_field :category, value: nil %>
         <%= form.submit "Remove from " + @category.name, class: 'btn btn-dark' %>
+        <%= link_to "edit", edit_blog_post_path(bp), class: 'btn btn-primary'%>
 
       <% end %>
     <% end %>

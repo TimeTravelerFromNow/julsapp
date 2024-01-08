@@ -8,7 +8,7 @@
   <% end %>
 
 <% categories.each do |category| %>
-  <% if category.blog_posts.count > 0 %>
+  <% if category.blog_posts.where(status: "public").count > 0 %>
    <%= link_to category_path(category), class: "col-sm category" do %>
     <h5 class="category-title" <% if @category == category %> style="--categorySelectColor: gray;" <% end %> >
       <%= category.name.upcase %> <small>(<%= category.blog_posts.count %>)</small>
