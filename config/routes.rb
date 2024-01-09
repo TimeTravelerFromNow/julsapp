@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'musics/show'
 
 
-  scope module: "admin" do
     resources :albums do
       resources :musics
     end
@@ -23,8 +22,6 @@ Rails.application.routes.draw do
     resources :categories do
       resources :blog_posts
     end
-  end # admin
-
 
 
   get 'musics/index' => 'musics#index', as: :musics_index
