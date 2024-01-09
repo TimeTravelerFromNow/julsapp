@@ -1,5 +1,5 @@
-module Admin
-class CategoriesController < AdminController
+
+class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
 
   # GET /categories or /categories.json
@@ -81,4 +81,3 @@ class CategoriesController < AdminController
       params.require(:category).permit(:name, :description, :category_image, :blog_post)
     end
 end
-end #module Admin

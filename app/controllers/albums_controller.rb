@@ -1,5 +1,5 @@
-module Admin
- class AlbumsController < AdminController
+
+ class AlbumsController < ApplicationController
   before_action :set_album, only: %i[ show edit update destroy ]
 
   # GET /albums or /albums.json
@@ -72,4 +72,3 @@ module Admin
       params.require(:album).permit(:name, :album_cover_image, :music, :story)
     end
 end
-end # module Admin
