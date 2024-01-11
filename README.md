@@ -7,6 +7,8 @@ Things you may want to cover:
 
 * Ruby version
 2.7.4
+Rails 7
+
 * System dependencies
 
 * Configuration
@@ -16,7 +18,8 @@ run `bundle install`
 run `rake db:migrate`
 
 * Database initialization
-I modified and tested `config.active_record.schema_format = :sql` in `application.rb`. Not entirely sure why, but I was debugging some `schema.rb` database missing issue
+I modified and tested `config.active_record.schema_format = :sql` in `application.rb`.
+Correct me if I'm wrong but `schema.rb` wont get populated when the `config.active_record.schema_format = :sql` is set.
 
 * How to run the test suite
 
