@@ -16,9 +16,7 @@ run `bundle install`
 run `rake db:migrate`
 
 * Database initialization
-I did mess with
-    # config.active_record.schema_format = :sql
-  in `application.rb`. Not entirely sure why, but I was debugging some `schema.rb` database missing issue
+I modified and tested `config.active_record.schema_format = :sql` in `application.rb`. Not entirely sure why, but I was debugging some `schema.rb` database missing issue
 
 * How to run the test suite
 
