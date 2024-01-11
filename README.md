@@ -1,7 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails app code as is.  I may make a full length tutorial on Youtube one day, but for now it's just this video
+https://youtu.be/rlmyUE9BonQ?si=wNeyFH2rtyiyPW6d
 
 Things you may want to cover:
 
