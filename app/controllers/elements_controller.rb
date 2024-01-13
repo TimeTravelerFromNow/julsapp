@@ -5,7 +5,11 @@ class ElementsController < ApplicationController
 
     # POST /elements or /elements.json
     def create
-      @element = @blog_post.elements.build(element_params)
+      bp_elems =  @blog_post.elements
+      @element = bp_elems.build(element_params)
+
+      @element.position = bp_elems.count
+
 
       if @element.save
         notice = nil
